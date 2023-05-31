@@ -1,0 +1,291 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api-accuknox-com-virtual-svc
+  namespace: {{ .Values.namespace.istio }}
+spec:
+  gateways:
+  - dev-gateway
+  hosts:
+  - {{ .Values.hosts.cwpp}} 
+  http:
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.usermanagement.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.usermanagement.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.clustermanagement.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.clustermanagement.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.datapipelineapi1.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.datapipelineapi1.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.datapipelineapi2.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.datapipelineapi2.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.datapipelineapi3.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.datapipelineapi3.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.policymanagement.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.policymanagement.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.labelmanagement.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.labelmanagement.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.clusteronboarding.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.clusteronboarding.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.policyproviderservice.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.policyproviderservice.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.vmmanagement.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.vmmanagement.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.channelintegration.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.channelintegration.host }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.vulnerabilityservice.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.vulnerabilityservice.prefix }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.policystorageservice.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.policystorageservice.prefix }}
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: {{ .Values.observabilityapi.prefix }}
+    route:
+    - destination:
+        host: {{ .Values.observabilityapi.prefix }}
+        port:
+          number: 80

@@ -1,0 +1,75 @@
+hosts:
+  cwpp: "cwpp.dev.accuknox.com"
+  cspm: "cspm.dev.accuknox.com"
+  soarcast: "soarcast.dev.accuknox.com"
+  redis : "redis.dev.accuknox.com"
+
+#clusterissuer
+issuerEmailid: devops.alerts@accuknox.com
+issuerName: letsencrypt-dev
+
+#secretName
+secretName : dev-accuknox-com
+
+namespace:
+  istio : istio-system
+  divy : accuknox-dev-divy
+  soarcast : accuknox-dev-soarcast
+  saltstack : accuknox-dev-saltstack
+
+#http-match-prefix & route-destination-host
+usermanagement:
+  prefix : /usermanagement
+  host : usermanagement-service.accuknox-dev-user-mgmt.svc.cluster.local
+
+clustermanagement:
+  prefix : /cm
+  host : cluster-management-service.accuknox-dev-cluster-mgmt.svc.cluster.local
+
+datapipelineapi1: 
+  prefix : /datapipelineapi
+  host : datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+
+datapipelineapi2: 
+  prefix : /datapipelineapi
+  host : datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+
+datapipelineapi3: 
+  prefix : /dashboards
+  host : datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+
+policymanagement:
+  prefix : /policymanagement
+  host : policymanagement.accuknox-dev-policy-service.svc.cluster.local
+
+labelmanagement:
+  prefix : /labelmanagement
+  host : labelmanagement.accuknox-dev-label-service.svc.cluster.local
+
+clusteronboarding:
+  prefix : /cluster-onboarding
+  host : cluster-onboarding-service.accuknox-dev-cluster-onboard.svc.cluster.local
+
+policyproviderservice :
+  prefix : /pps
+  host : policy-provider-service-service.accuknox-dev-policy-provider-service.svc.cluster.local
+
+vmmanagement :
+  prefix : /vm-management
+  host : vm-management-service.accuknox-dev-vm-management.svc.cluster.local
+
+channelintegration :
+  prefix : /v3
+  host : channel-integration-service.accuknox-dev-integration.svc.cluster.local
+
+vulnerabilityservice :
+  prefix : /vulnerabilityservice
+  host : vulnerability-service.accuknox-dev-vulnerability-service.svc.cluster.local
+
+policystorageservice : 
+  prefix : /policystorageservice
+  host : policy-storage-service.accuknox-dev-policy-storage-service.svc.cluster.local
+
+observabilityapi :
+  prefix : /observabilityapi
+  host : observability-api.accuknox-dev-observability-api.svc.cluster.local

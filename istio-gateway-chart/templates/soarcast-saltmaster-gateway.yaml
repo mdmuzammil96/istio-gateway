@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: saltmaster-gateway
+  namespace: {{ .Values.namespace.saltstack }}
+spec:
+  selector:
+    istio: istio-ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: '80'
+      protocol: TCP
+    hosts:
+    - "*"
+  - port:
+      number: 443
+      name: '443'
+      protocol: TCP
+    hosts:
+    - "*"

@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: saltmaster-virtual-service
+  namespace: {{ .Values.namespace.saltstack }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - saltmaster-gateway
+  tcp:
+  - match:
+    - port: 80
+    route:
+    - destination:
+        host: saltmaster-service
+        port:
+          number: 80
+  - match:
+    - port: 443
+    route:
+    - destination:
+        host: saltmaster-service
+        port:
+          number: 443
