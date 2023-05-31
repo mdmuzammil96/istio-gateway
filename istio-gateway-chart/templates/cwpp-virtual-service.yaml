@@ -1,0 +1,291 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api-accuknox-com-virtual-svc
+  namespace: {{ .Values.namespace.istio }}
+spec:
+  gateways:
+  - dev-gateway
+  hosts:
+  - {{ .Values.hosts.cwpp}} 
+  http:
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /usermanagement
+    route:
+    - destination:
+        host: usermanagement-service.accuknox-dev-user-mgmt.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /cm
+    route:
+    - destination:
+        host: cluster-management-service.accuknox-dev-cluster-mgmt.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /datapipelineapi
+    route:
+    - destination:
+        host: datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /datapipeline
+    route:
+    - destination:
+        host: datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /dashboards
+    route:
+    - destination:
+        host: datapipelineapi-service.accuknox-dev-datapipeline-api.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /policymanagement
+    route:
+    - destination:
+        host: policymanagement.accuknox-dev-policy-service.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /labelmanagement
+    route:
+    - destination:
+        host: labelmanagement.accuknox-dev-label-service.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /cluster-onboarding
+    route:
+    - destination:
+        host: cluster-onboarding-service.accuknox-dev-cluster-onboard.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /pps
+    route:
+    - destination:
+        host: policy-provider-service-service.accuknox-dev-policy-provider-service.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /vm-management
+    route:
+    - destination:
+        host: vm-management-service.accuknox-dev-vm-management.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /v3
+    route:
+    - destination:
+        host: channel-integration-service.accuknox-dev-integration.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /vulnerabilityservice
+    route:
+    - destination:
+        host: vulnerability-service.accuknox-dev-vulnerability-service.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /policystorageservice
+    route:
+    - destination:
+        host: policy-storage-service.accuknox-dev-policy-storage-service.svc.cluster.local
+        port:
+          number: 80
+  - corsPolicy:
+      allowHeaders:
+      - '*'
+      allowMethods:
+      - OPTIONS
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      allowOrigins:
+      - regex: .
+      maxAge: 24h
+    match:
+    - uri:
+        prefix: /observabilityapi
+    route:
+    - destination:
+        host: observability-api.accuknox-dev-observability-api.svc.cluster.local
+        port:
+          number: 80

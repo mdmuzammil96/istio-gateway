@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: divy-gateway
+  namespace: {{ .Values.namespace.divy }}
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - {{ .Values.hosts.cspm}} 
+    tls:
+      mode: PASSTHROUGH
+      # credentialName: divy-accuknox-com
